@@ -39,6 +39,8 @@ gem 'rails_12factor', group: :production
 gem 'bootstrap-sass', '~> 3.3.5.1'
 gem 'sprockets', '2.11.0'
 
+# Add Pagination
+gem 'will_paginate', '~> 3.0.6'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
