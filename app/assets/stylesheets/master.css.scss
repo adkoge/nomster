@@ -17,4 +17,11 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
 	background: url('/assets/concrete_seamless.png');
+	font-family: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
+}
+
+.navbar.navbar-inverse {
+	background:url('/assets/mooning.png');
+	border-radius: 0;
+	box-shadow: 0px 1px 3px #2a2a2a;
 }
