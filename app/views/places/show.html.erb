@@ -30,9 +30,11 @@ function initMap() {
 <br /><br />
 	<div class="pull-right">
 		<% if current_user && current_user == @place.user %>
-			<%= link_to 'Add Photos', place_photos_path(@place), class: 'btn btn-primary' %>
-			<%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>
-			<%= link_to 'Destroy', place_path(@place), method: :delete, data: {confirm: 'Are you sure you want to delete this?'},class: 'btn btn-danger' %>
+			 <button class="btn btn-primary btn-lg pull-;eft" data-toggle="modal" data-target="#PhotoModal">
+    Add a Photo
+  </button>
+			<%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary btn-lg' %>
+			<%= link_to 'Destroy', place_path(@place), method: :delete, data: {confirm: 'Are you sure you want to delete this?'},class: 'btn btn-danger btn-lg' %>
 		<% end %>
 	</div>
 
@@ -86,7 +88,7 @@ function initMap() {
 
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="PhotoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -111,6 +113,7 @@ function initMap() {
 <hr />
 <div class="clear"></div>
 
+<% if @place.photos.present? %>
 <div class="booyah-box col-xs-8 col-md-10 col-lg-10">
 	<% @place.photos.each do |photo| %>
 		<%= image_tag photo.picture, class: 'img-responsive' %>
@@ -120,3 +123,4 @@ function initMap() {
 		</p>
 	<% end %>
 </div>
+<% end %>
