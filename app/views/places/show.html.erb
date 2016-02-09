@@ -46,6 +46,11 @@ function initMap() {
 	<%= f.submit "Add a Comment", class: 'btn btn-primary' %>
 <% end %>
 
+<%= simple_form_for @photo, url: '#' do |f| %>
+	<%= f.input :caption %>
+	<%= f.submit "Add a Photo", class: 'btn btn-primary' %>
+<% end %>
+
 <br />
 
 <h1>Comments</h1>
