@@ -5,13 +5,13 @@
     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
   </ol>
-
+  
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
       <%= image_tag 'slider1.jpg', class: 'img-responsive' %>
       <div class="carousel-caption">
-        Find the best restaurants around richmond.
+        Find the best restaurants around Richmond VA.
       </div>
     </div>
     <div class="item">
@@ -19,49 +19,53 @@
       <div class="carousel-caption">
         Tons of great options at almost every block.
       </div>
-  	</div>
-       <div class="item">
+    </div>
+    <div class="item">
       <%= image_tag 'slider3.jpg' %>
       <div class="carousel-caption">
-       	Different cuisines from all over the world.
+        Different cuisines from all over the world.
       </div>
+    </div>
+    
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
   </div>
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-  </a>
-</div>
-
-<% @places.each do |place| %>
-	<div class="booyah-box col-xs-10 col-xs-offset-1">
-		<h1><%= link_to place.name, place_path(place) %></h1>
-		<i><%= place.address %></i><br /><br />
-		<p><%= place.description %></p><br />
-
-		<% if place.user.present? %>
-			<small><%= place.user.email %></small>
-		<% end %>
-
-<% if place.comments.present? %>
-
-<div class="col-xs-12">
-  <blockquote>
-    <% if place.comments.last.humanized_rating.present? %>
-      <b><%= place.comments.last.humanized_rating %></b> -
+  
+  <% @places.each do |place| %>
+  <div class="booyah-box col-xs-10 col-xs-offset-1">
+    <h1><%= link_to place.name, place_path(place) %></h1>
+    <i><%= place.address %></i><br /><br />
+    <%= if place.photos.any? %>
+    <%= image_tag place.photos.first.picture, class: 'img-responsive' %>
     <% end %>
-    <%= place.comments.last.message %>
-    <small><%= place.comments.last.user.email %></small>
-  </blockquote>
-</div>
-<% end %>
-
-</div>
-<% end %>
-
-<div class="pagination col-xs-10 col-xs-offset-1">
-	<%= will_paginate @places %>
-</div>
+    <p><%= place.description %></p><br />
+    
+    <% if place.user.present? %>
+    <small><%= place.user.email %></small>
+    <% end %>
+    
+    <% if place.comments.present? %>
+    
+    <div class="col-xs-12">
+      <blockquote>
+        <% if place.comments.last.humanized_rating.present? %>
+        <b><%= place.comments.last.humanized_rating %></b> -
+        <% end %>
+        <%= place.comments.last.message %>
+        <small><%= place.comments.last.user.email %></small>
+      </blockquote>
+    </div>
+    <% end %>
+    
+  </div>
+  <% end %>
+  
+  <div class="pagination col-xs-10 col-xs-offset-1">
+    <%= will_paginate @places %>
+  </div>
+  
