@@ -40,11 +40,10 @@
   <div class="booyah-box col-xs-10 col-xs-offset-1">
     <h1><%= link_to place.name, place_path(place) %></h1>
     <i><%= place.address %></i><br /><br />
-    <%= if place.photos.any? %>
+    <% if place.photos.any? %>
     <%= image_tag place.photos.first.picture, class: 'img-responsive' %>
     <% end %>
     <p><%= place.description %></p><br />
-    
     <% if place.user.present? %>
     <small><%= place.user.email %></small>
     <% end %>
